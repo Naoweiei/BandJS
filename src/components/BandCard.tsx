@@ -7,7 +7,7 @@ type Props = {
 
 export default function BandCard({ band }: Props) {
   return (
-    <div>
+    <div className="band">
       <Image
         src={band.image}
         alt={band.name}
@@ -20,15 +20,25 @@ export default function BandCard({ band }: Props) {
       <p>แนวเพลง : {band.genre}</p>
       <p>{band.description}</p>
 
-      <h3>สมาชิก</h3>
+      <h3 className="font-bold mt-4">สมาชิก</h3>
 
-      <ul>
+      <div className="flex gap-6 mt-4">
         {band.members.map((member) => (
-          <li key={member.id}>
-            {member.name} - {member.role}
-          </li>
+          <div key={member.id} className="text-center">
+            <Image
+              src={member.image}
+              alt={member.name}
+              width={100}
+              height={100}
+              className="w-[100] h-[100] rounded-full object-cover"
+            />
+
+            <p className="mt-2 font-medium">
+              {member.name}
+            </p>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
