@@ -3,9 +3,13 @@ import { Band } from "@/type/band";
 
 type Props = {
   band: Band;
+  isFollowing: boolean;
+  likecount: number;
+  onToggleFollow: (id:number) => void;
+  onLike: (id:number) => void;
 };
 
-export default function BandCard({ band }: Props) {
+export default function BandCard({ band,isFollowing,likecount,onToggleFollow,onLike, }: Props) {
   return (
     <div className="band">
       <Image
@@ -38,6 +42,24 @@ export default function BandCard({ band }: Props) {
             </p>
           </div>
         ))}
+      </div>
+      <div className="flex items-start gap-8 mt-6">
+        <button
+          type="button"
+          aria-pressed={isFollowing}
+          onClick={() => onToggleFollow(band.id)}
+          className="w-150 justify-center py-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 whitespace-nowrap"
+        >
+          {isFollowing ? "เลิกติดตาม" : "ติดตาม"}
+        </button>
+
+        <button
+          type="button"
+          onClick={() => onLike(band.id)}
+          className="px-4 py-2 rounded-lg bg-pink-200 hover:bg-pink- whitespace-nowrap"
+        >
+          👍 {likecount}
+        </button>
       </div>
     </div>
   );

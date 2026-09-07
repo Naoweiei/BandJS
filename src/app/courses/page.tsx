@@ -1,12 +1,13 @@
+//"use client";
 import CourseCard from "@/components/CourseCard"
 import { courses } from "@/data/coursesdata"
+import CourseExplorer from "@/components/CourseExplorer";
 
 export default function CoursesPage() {
   return (
-    <div className="p-4">
-      {courses.map((course, index) => (
-        <CourseCard key={index} course={course} />
-      ))}
-    </div>
+    <>
+      <CourseExplorer courses={courses} />
+
+    </>
   )
 }
